@@ -1,21 +1,21 @@
 package dev.drakou111;
 
 public class Bounds {
-    public double minX;
-    public double maxX;
-    public double minZ;
-    public double maxZ;
+    public float minX;
+    public float maxX;
+    public float minZ;
+    public float maxZ;
 
-    private static final double EPSILON = 0.00001;
+    private static final float EPSILON = 0.00001F;
 
-    public Bounds(double minX, double maxX, double minZ, double maxZ) {
+    public Bounds(float minX, float maxX, float minZ, float maxZ) {
         this.minX = minX - EPSILON;
         this.maxX = maxX + EPSILON;
         this.minZ = minZ - EPSILON;
         this.maxZ = maxZ + EPSILON;
     }
 
-    public Bounds(double x, double z) {
+    public Bounds(float x, float z) {
         this.minX = x - EPSILON;
         this.maxX = x + EPSILON;
         this.minZ = z - EPSILON;
@@ -29,7 +29,7 @@ public class Bounds {
         this.maxZ = 1;
     }
 
-    public boolean isInRange(double x, double z) {
+    public boolean isInRange(float x, float z) {
         return x >= minX && x <= maxX && z >= minZ && z <= maxZ;
     }
 }

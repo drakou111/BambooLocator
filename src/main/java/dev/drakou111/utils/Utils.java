@@ -1,4 +1,6 @@
-package dev.drakou111;
+package dev.drakou111.utils;
+
+import dev.drakou111.BlockType;
 
 public class Utils {
     public static long getSeed(int x, int z) {
@@ -18,6 +20,6 @@ public class Utils {
         float f = blockType.maxOffset;
         double d0 = clamp(((double)((float)(i & 15L) / 15.0F) - 0.5) * 0.5, -f, f);
         double d1 = clamp(((double)((float)(i >> 8 & 15L) / 15.0F) - 0.5) * 0.5, -f, f);
-        return new Vec2(d0, d1);
+        return new Vec2((float)d0, (float)d1);
     }
 }

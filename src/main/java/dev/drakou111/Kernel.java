@@ -1,8 +1,11 @@
 package dev.drakou111;
 
+import dev.drakou111.utils.Utils;
+import dev.drakou111.utils.Vec2;
+
 public class Kernel {
-    BlockType blockType;
-    Bounds[][] grid;
+    public BlockType blockType;
+    public Bounds[][] grid;
 
     public Kernel(Bounds[][] grid, BlockType blockType) {
         this.grid = grid;

@@ -1,10 +1,13 @@
 package dev.drakou111.ui;
 
 import dev.drakou111.Bounds;
+import dev.drakou111.utils.BambooOffsets;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -17,29 +20,9 @@ public class KernelCell extends JPanel {
     private static final int LOGICAL_BAMBOO = 2;
     private static final double MAX_OFFSET = 0.5;
 
-    private final double[] OFFSETS = {
-            -0.25,
-            -0.21666666865348816,
-            -0.18333333730697632,
-            -0.15000000596046448,
-            -0.11666667461395264,
-            -0.0833333432674408,
-            -0.050000011920928955,
-            -0.016666680574417114,
-            0.016666680574417114,
-            0.050000011920928955,
-            0.0833333432674408,
-            0.11666667461395264,
-            0.15000000596046448,
-            0.18333333730697632,
-            0.21666666865348816,
-            0.25
-    };
+    private float ax = BambooOffsets.OFFSETS[0], az = BambooOffsets.OFFSETS[0];
+    private float bx = BambooOffsets.OFFSETS[BambooOffsets.OFFSETS.length - 1], bz = BambooOffsets.OFFSETS[BambooOffsets.OFFSETS.length - 1];
 
-    private double ax = OFFSETS[0], az = OFFSETS[0];
-    private double bx = OFFSETS[OFFSETS.length - 1], bz = OFFSETS[OFFSETS.length - 1];
-
-    // pixel sizes (per-instance)
     private final int blockSizePx;
     private final int bambooSizePx;
 
@@ -193,11 +176,11 @@ public class KernelCell extends JPanel {
         return new double[]{rx * MAX_OFFSET, ry * MAX_OFFSET};
     }
 
-    private double nearestOffset(double v) {
-        double best = OFFSETS[0];
-        double bestDist = Math.abs(v - best);
-        for (double o : OFFSETS) {
-            double d = Math.abs(v - o);
+    private float nearestOffset(double v) {
+        float best = BambooOffsets.OFFSETS[0];
+        float bestDist = (float)Math.abs(v - best);
+        for (float o : BambooOffsets.OFFSETS) {
+            float d = (float)Math.abs(v - o);
             if (d < bestDist) {
                 bestDist = d;
                 best = o;
